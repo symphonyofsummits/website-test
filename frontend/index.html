@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SYMPHONY OF SUMMITS — Himalayan Treks, Expeditions & Pilgrimages</title>
+<meta name="description" content="Premium Himalayan trekking, expeditions, pilgrimages and curated travel packages. Verified batches, transparent pricing, 24/7 trail support.">
+<meta name="theme-color" content="#f47b20">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Symphony of Summits">
+<meta property="og:description" content="Himalayan treks, expeditions and pilgrimages — curated by mountain people.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+<!-- API base config (change for prod) -->
+<script>
+  window.SOS_CONFIG = {
+    apiBase: "http://127.0.0.1:8000/api/v1",
+    whatsapp: "919999999999" // UPDATE with your actual number
+  };
+</script>
+</head>
+<body>
+
+<!-- =============== NAV =============== -->
+<nav class="nav" id="nav">
+  <a class="logo" href="/">SYMPHONY OF <span>SUMMITS</span></a>
+  <div class="links">
+    <a href="#trips">Treks</a>
+    <a href="#expeditions">Expeditions</a>
+    <a href="#pilgrimage">Pilgrimage</a>
+    <a href="#packages">Packages</a>
+    <a href="#gear">Rent Gear</a>
+    <a href="#stories">Stories</a>
+    <a href="#about">About</a>
+  </div>
+  <div class="nav-actions">
+    <button class="pill" id="locationBtn">📍 India</button>
+    <button class="btn" onclick="openQuote()">Plan Your Trip</button>
+  </div>
+</nav>
+
+<!-- =============== HERO =============== -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">Himalayan Travel · Treks · Expeditions · Pilgrimage</div>
+    <h1>EVERY SUMMIT<br>SINGS A STORY.</h1>
+    <p>From first alpine trails to high-altitude expeditions — discover journeys shaped by mountain people who have walked these ridges for generations.</p>
+    <div class="hero-buttons">
+      <a class="btn" href="#trips">Explore Treks</a>
+      <button class="btn ghost" onclick="openQuote()">Plan My Journey</button>
+    </div>
+  </div>
+  <div class="scroll">↓ Scroll to explore</div>
+</header>
+
+<!-- =============== QUICK SEARCH BAR =============== -->
+<div class="searchbar">
+  <div class="field">
+    <small>Where</small>
+    <select><option>Himalayas</option><option>Himachal</option><option>Uttarakhand</option><option>Ladakh</option><option>Sikkim</option><option>Nepal</option></select>
+  </div>
+  <div class="field">
+    <small>Trip type</small>
+    <select><option>Treks & Expeditions</option><option>Trek</option><option>Expedition</option><option>Pilgrimage</option><option>Package</option></select>
+  </div>
+  <div class="field">
+    <small>Difficulty</small>
+    <select><option>All levels</option><option>Easy</option><option>Moderate</option><option>Difficult</option><option>Extreme</option></select>
+  </div>
+  <button class="btn" onclick="document.querySelector('#trips').scrollIntoView()">Search</button>
+</div>
+
+<!-- =============== 2. TREKS SECTION (filterable) =============== -->
+<section id="trips">
+  <div class="section-head">
+    <div>
+      <div class="kicker">Find your trail</div>
+      <h2>Popular Treks</h2>
+    </div>
+    <p>Curated Himalayan experiences with transparent itineraries, verified difficulty levels and professional trip leaders.</p>
+  </div>
+
+  <!-- Category chips -->
+  <div class="chips">
+    <button class="chip active" data-filter="all">All</button>
+    <button class="chip" data-scope="indian">Indian</button>
+    <button class="chip" data-scope="international">International</button>
+    <button class="chip" data-difficulty="easy">Easy</button>
+    <button class="chip" data-difficulty="moderate">Moderate</button>
+    <button class="chip" data-difficulty="difficult">Difficult</button>
+    <button class="chip" data-category="adventure">Adventure</button>
+    <button class="chip" data-category="hillstation">Hill Stations</button>
+  </div>
+
+  <div class="grid" id="tripsGrid">
+    <!-- Fallback cards shown until API loads -->
+    <article class="card">
+      <div class="trip-img" style="background-image:url('https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1000&q=85')">
+        <span class="badge">MODERATE</span>
+      </div>
+      <div class="card-body">
+        <h3>Hampta Pass Trek</h3>
+        <div class="meta"><span>Himachal Pradesh</span><span>5 Days</span><span>4,270m</span></div>
+        <p>Contrasting landscapes, alpine camps and a dramatic pass crossing.</p>
+        <div class="price">
+          <div><strong>From ₹12,499</strong><small>per person</small></div>
+          <button class="arrow" onclick="openQuote('Hampta Pass Trek')">→</button>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <div class="trip-img" style="background-image:url('https://images.unsplash.com/photo-1533130061792-64b345e4a833?auto=format&fit=crop&w=1000&q=85')">
+        <span class="badge">DIFFICULT</span>
+      </div>
+      <div class="card-body">
+        <h3>Goechala Trek</h3>
+        <div class="meta"><span>Sikkim</span><span>8 Days</span><span>4,940m</span></div>
+        <p>High Himalayan trails with spectacular views of Kanchenjunga.</p>
+        <div class="price">
+          <div><strong>From ₹18,999</strong><small>per person</small></div>
+          <button class="arrow" onclick="openQuote('Goechala Trek')">→</button>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <div class="trip-img" style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=85')">
+        <span class="badge hot">EXTREME</span>
+      </div>
+      <div class="card-body">
+        <h3>Markha Valley Trek</h3>
+        <div class="meta"><span>Ladakh</span><span>7 Days</span><span>5,200m</span></div>
+        <p>Cold desert, remote villages and wide-open Himalayan landscapes.</p>
+        <div class="price">
+          <div><strong>From ₹16,499</strong><small>per person</small></div>
+          <button class="arrow" onclick="openQuote('Markha Valley Trek')">→</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- =============== DESTINATIONS =============== -->
+<section class="destinations" id="destinations">
+  <div class="section-head">
+    <div><div class="kicker">Explore regions</div><h2>Where will you go?</h2></div>
+    <p>From green valleys to high-altitude deserts, choose the landscape that calls you.</p>
+  </div>
+  <div class="dest-grid">
+    <div class="dest" style="background-image:url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1300&q=85')">
+      <div><h3>Himachal Pradesh</h3><small>Trails · Passes · Valleys</small></div>
+    </div>
+    <div class="dest" style="background-image:url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85')">
+      <div><h3>Uttarakhand</h3><small>Classic Himalayan treks</small></div>
+    </div>
+    <div class="dest" style="background-image:url('https://images.unsplash.com/photo-1533130061792-64b345e4a833?auto=format&fit=crop&w=900&q=85')">
+      <div><h3>Sikkim</h3><small>Kanchenjunga country</small></div>
+    </div>
+    <div class="dest" style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85')">
+      <div><h3>Ladakh</h3><small>High-altitude adventures</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== 1. EXPEDITIONS & PEAKS =============== -->
+<section class="expeditions" id="expeditions">
+  <div class="section-head">
+    <div><div class="kicker">Beyond trekking</div><h2>Expeditions & Peaks</h2></div>
+    <p style="color:#b9c9d0">Indian and international mountaineering expeditions for serious climbers. Application and review process.</p>
+  </div>
+  <div class="exp-grid">
+    <div class="exp-feature">
+      <div class="exp-content">
+        <div class="eyebrow">Featured expedition</div>
+        <h3>Stok Kangri · 6,153m</h3>
+        <p>Ladakh · 10 days · Alpine F+ · Beginner-friendly Himalayan peak</p>
+        <button class="btn" onclick="openQuote('Stok Kangri Expedition')">Apply for Expedition</button>
+      </div>
+    </div>
+    <div class="exp-side">
+      <div class="exp-mini">
+        <h4>Indian Peaks</h4>
+        <p>Stok Kangri, Kang Yatse II, Mentok Kangri — technical and non-technical climbs across the Indian Himalayas.</p>
+      </div>
+      <div class="exp-mini">
+        <h4>International</h4>
+        <p>Everest Base Camp, Kilimanjaro, Elbrus. Full logistics, visa support, acclimatization planning.</p>
+      </div>
+      <div class="exp-mini">
+        <h4>Technical Climbs</h4>
+        <p>For climbers with appropriate skills. Requirements assessed before confirmation.</p>
+        <button class="btn ghost" style="margin-top:12px" onclick="openQuote('Technical expedition enquiry')">Enquire</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== 3. PILGRIMAGE =============== -->
+<section class="pilgrimage" id="pilgrimage">
+  <div class="section-head">
+    <div><div class="kicker">Spiritual journeys</div><h2>Pilgrimage</h2></div>
+    <p>Char Dham, Kailash Mansarovar, Amarnath — organised with reverence, safety and comfort.</p>
+  </div>
+  <div class="pilg-grid">
+    <div class="pilg-card">
+      <div class="pilg-img" style="background-image:url('https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=85')"></div>
+      <div class="pilg-body">
+        <h3>Char Dham Yatra</h3>
+        <div class="meta"><span>Uttarakhand</span><span>11 Days</span></div>
+        <p>Yamunotri · Gangotri · Kedarnath · Badrinath by road, with helicopter options available.</p>
+        <div class="price">
+          <strong>From ₹32,999</strong>
+          <button class="btn blue" onclick="openQuote('Char Dham Yatra')">Enquire</button>
+        </div>
+      </div>
+    </div>
+    <div class="pilg-card">
+      <div class="pilg-img" style="background-image:url('https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=800&q=85')"></div>
+      <div class="pilg-body">
+        <h3>Kailash Mansarovar</h3>
+        <div class="meta"><span>Tibet via Nepal</span><span>14 Days</span></div>
+        <p>Sacred parikrama of Mt. Kailash and darshan at Lake Mansarovar — fully guided expedition.</p>
+        <div class="price">
+          <strong>From ₹1,85,000</strong>
+          <button class="btn blue" onclick="openQuote('Kailash Mansarovar')">Enquire</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== 6. PACKAGES =============== -->
+<section id="packages">
+  <div class="section-head">
+    <div><div class="kicker">Curated holidays</div><h2>Packages</h2></div>
+    <p>Pre-designed holiday packages — national and international — with everything handled end-to-end.</p>
+  </div>
+  <div class="chips">
+    <button class="chip active">National</button>
+    <button class="chip">International</button>
+    <button class="chip">Honeymoon</button>
+    <button class="chip">Family</button>
+    <button class="chip">Weekend getaways</button>
+  </div>
+  <div class="grid">
+    <article class="card">
+      <div class="trip-img" style="background-image:url('https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=1000&q=85')">
+        <span class="badge">NATIONAL</span>
+      </div>
+      <div class="card-body">
+        <h3>Kashmir Great Escape</h3>
+        <div class="meta"><span>J&K</span><span>7 Nights</span><span>Srinagar · Gulmarg · Pahalgam</span></div>
+        <p>Shikara rides, meadows and alpine lakes — all seasons.</p>
+        <div class="price">
+          <div><strong>From ₹24,999</strong><small>per person</small></div>
+          <button class="arrow" onclick="openQuote('Kashmir Package')">→</button>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <div class="trip-img" style="background-image:url('https://images.unsplash.com/photo-1587595431973-160d0d94add1?auto=format&fit=crop&w=1000&q=85')">
+        <span class="badge hot">INTERNATIONAL</span>
+      </div>
+      <div class="card-body">
+        <h3>Bhutan — The Last Shangri-La</h3>
+        <div class="meta"><span>Bhutan</span><span>6 Nights</span><span>Paro · Thimphu · Punakha</span></div>
+        <p>Tiger's Nest, dzongs and happiest-country-on-earth hospitality.</p>
+        <div class="price">
+          <div><strong>From ₹52,999</strong><small>per person</small></div>
+          <button class="arrow" onclick="openQuote('Bhutan Package')">→</button>
+        </div>
+      </div>
+    </article>
+    <article class="card">
+      <div class="trip-img" style="background-image:url('https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1000&q=85')">
+        <span class="badge hot">INTERNATIONAL</span>
+      </div>
+      <div class="card-body">
+        <h3>Nepal Highlights</h3>
+        <div class="meta"><span>Nepal</span><span>8 Nights</span><span>Kathmandu · Pokhara · Chitwan</span></div>
+        <p>Culture, lakes and jungle safari in one classic circuit.</p>
+        <div class="price">
+          <div><strong>From ₹38,999</strong><small>per person</small></div>
+          <button class="arrow" onclick="openQuote('Nepal Package')">→</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- =============== 4. RENT GEAR =============== -->
+<section class="gear" id="gear">
+  <div class="section-head">
+    <div><div class="kicker">Travel light</div><h2>Rent Gear</h2></div>
+    <p>Quality trekking gear on daily rent — pick up from Delhi, Manali, Rishikesh or your trek base camp.</p>
+  </div>
+  <div class="gear-grid">
+    <div class="gear-card">
+      <div class="gear-icon">🎒</div>
+      <h4>Rucksack 60L</h4>
+      <small>Decathlon Forclaz</small>
+      <div class="rent">₹200<small>/day · ₹2000 deposit</small></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-icon">⛺</div>
+      <h4>2-Person Tent</h4>
+      <small>Decathlon MH100</small>
+      <div class="rent">₹350<small>/day · ₹3000 deposit</small></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-icon">🧥</div>
+      <h4>Down Jacket</h4>
+      <small>-15°C rated</small>
+      <div class="rent">₹250<small>/day · ₹4000 deposit</small></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-icon">🥾</div>
+      <h4>Trekking Shoes</h4>
+      <small>Quechua MH500</small>
+      <div class="rent">₹200<small>/day · ₹2500 deposit</small></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-icon">🛏️</div>
+      <h4>Sleeping Bag</h4>
+      <small>-10°C comfort</small>
+      <div class="rent">₹150<small>/day · ₹1800 deposit</small></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-icon">🥢</div>
+      <h4>Trekking Poles (pair)</h4>
+      <small>Aluminium</small>
+      <div class="rent">₹80<small>/day · ₹500 deposit</small></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-icon">💡</div>
+      <h4>Headlamp</h4>
+      <small>Petzl Tikka</small>
+      <div class="rent">₹60<small>/day · ₹800 deposit</small></div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-icon">🧊</div>
+      <h4>Microspikes</h4>
+      <small>For snow treks</small>
+      <div class="rent">₹100<small>/day · ₹1200 deposit</small></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:30px">
+    <button class="btn" onclick="openQuote('Gear rental enquiry')">Rent Your Kit</button>
+  </div>
+</section>
+
+<!-- =============== 5. STORIES =============== -->
+<section id="stories">
+  <div class="social">
+    <div>
+      <div class="kicker">From the trail</div>
+      <h2>Stories, people & mountain moments.</h2>
+      <p style="color:var(--muted);line-height:1.7;margin-top:18px">An original social travel feed for trekker photographs, expedition diaries, destination guides and customer stories.</p>
+      <button class="btn blue" style="margin-top:10px">View all stories</button>
+    </div>
+    <div class="feed" id="storiesFeed">
+      <article class="post">
+        <img src="https://images.unsplash.com/photo-1486911278844-a81c5267e227?auto=format&fit=crop&w=900&q=85">
+        <div class="post-body"><small>EXPEDITION DIARY · LADAKH</small><p>What a high-altitude day actually feels like.</p></div>
+      </article>
+      <article class="post">
+        <img src="https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=900&q=85">
+        <div class="post-body"><small>TREK GUIDE · HIMACHAL</small><p>7 things to know before your first Himalayan trek.</p></div>
+      </article>
+      <article class="post">
+        <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=85">
+        <div class="post-body"><small>TRAIL STORY</small><p>Sunrise, silence and the long walk home.</p></div>
+      </article>
+      <article class="post">
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=85">
+        <div class="post-body"><small>GEAR GUIDE</small><p>Build a smarter kit for changing mountain weather.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =============== QUOTE =============== -->
+<section class="quote" id="quotation">
+  <div class="quote-box">
+    <div class="kicker">Personalized planning</div>
+    <h2>Tell us where you want to go.</h2>
+    <p style="color:var(--muted)">Request a customized quotation and our team will shape the itinerary around your dates, group and goals.</p>
+    <form class="form" onsubmit="submitQuote(event)">
+      <input required placeholder="Full name">
+      <input required type="email" placeholder="Email address">
+      <input required placeholder="Phone (+91)">
+      <input placeholder="Current city">
+      <input type="date">
+      <input type="number" min="1" placeholder="Travellers">
+      <textarea placeholder="Tell us about your dates, budget, experience or special requirements"></textarea>
+      <button class="btn full" type="submit">Request Quotation</button>
+    </form>
+  </div>
+</section>
+
+<!-- =============== ABOUT =============== -->
+<section id="about">
+  <div class="about">
+    <div class="about-img"></div>
+    <div>
+      <div class="kicker">About Symphony of Summits</div>
+      <h2>Travel deeper. Leave lighter.</h2>
+      <p style="color:var(--muted);line-height:1.75;margin-top:20px">Symphony of Summits is a modern Himalayan adventure brand focused on authentic trails, responsible travel and thoughtfully planned mountain experiences.</p>
+      <p style="color:var(--muted);line-height:1.75">From first-time trekkers to experienced expedition teams, every journey is built around clear information, local knowledge, safety and memorable moments.</p>
+      <div class="stats">
+        <div class="stat"><strong>50+</strong><span>Mountain journeys</span></div>
+        <div class="stat"><strong>10+</strong><span>Destinations</span></div>
+        <div class="stat"><strong>24/7</strong><span>Trip support</span></div>
+        <div class="stat"><strong>100%</strong><span>Adventure spirit</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== FOOTER =============== -->
+<footer>
+  <div class="footgrid">
+    <div>
+      <div class="logo">SYMPHONY OF <span>SUMMITS</span></div>
+      <p style="line-height:1.7;max-width:330px;font-size:13px;margin-top:12px">Premium Himalayan treks, travel experiences, pilgrimages and mountain expeditions — organised by mountain people.</p>
+      <div style="margin-top:14px">
+        <a href="https://instagram.com/symphonyofsummits" target="_blank">Instagram</a>
+        <a href="https://wa.me/919999999999" target="_blank">WhatsApp</a>
+        <a href="mailto:hello@symphonyofsummits.com">hello@symphonyofsummits.com</a>
+      </div>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <a href="#trips">All Treks</a>
+      <a href="#expeditions">Expeditions</a>
+      <a href="#pilgrimage">Pilgrimage</a>
+      <a href="#packages">Packages</a>
+      <a href="#gear">Rent Gear</a>
+      <a href="#stories">Stories</a>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="#about">About Us</a>
+      <a href="#quotation">Contact</a>
+      <a href="pages/safety.html">Safety Protocols</a>
+      <a href="pages/careers.html">Careers</a>
+      <a href="pages/blog.html">Blog</a>
+    </div>
+    <div>
+      <h4>Policies</h4>
+      <a href="pages/terms.html">Terms &amp; Conditions</a>
+      <a href="pages/privacy.html">Privacy Policy</a>
+      <a href="pages/cancellation.html">Cancellation Policy</a>
+      <a href="pages/refund.html">Refund Policy</a>
+      <a href="pages/responsible-travel.html">Responsible Travel</a>
+    </div>
+    <div>
+      <h4>Stay in the loop</h4>
+      <p style="font-size:13px">New trails, expedition stories and mountain inspiration — once a month.</p>
+      <form id="newsletterForm" style="margin-top:10px">
+        <input style="width:100%;padding:12px;border-radius:9px;border:0" type="email" placeholder="Your email" required>
+      </form>
+    </div>
+  </div>
+
+  <div class="foot-badges">
+    <span>Verified by Adventure Tour Operators Association of India (ATOAI)</span>
+    <span>Compliant with Indian Mountaineering Foundation (IMF) guidelines</span>
+    <span>ISO 9001:2015 Certified</span>
+    <span>GST Registered · Travel Agent License</span>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Important disclaimers.</strong> Weather in the Himalayas can change without warning; itineraries may be modified for safety.
+    Difficulty gradings are indicative — personal fitness and acclimatization vary. Photographs on this site are illustrative;
+    actual conditions on your trek may differ. All content, trek plans and itineraries © Symphony of Summits —
+    unauthorized reproduction prohibited. Please read our full Terms, Cancellation and Refund policies before booking.
+  </div>
+
+  <div class="copyright">
+    <span>© 2026 Symphony of Summits · All rights reserved</span>
+    <span>Built for the mountains · Based in Delhi NCR</span>
+  </div>
+</footer>
+
+<!-- =============== INSTAGRAM RIGHT RAIL =============== -->
+<aside class="ig-rail" id="igRail">
+  <button class="ig-close" title="Close">×</button>
+  <h5>From Instagram</h5>
+  <div class="ig-posts">
+    <!-- fallback thumbnails -->
+    <img class="ig-thumb" src="https://images.unsplash.com/photo-1486911278844-a81c5267e227?auto=format&fit=crop&w=400&q=70">
+    <img class="ig-thumb" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=400&q=70">
+    <img class="ig-thumb" src="https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=400&q=70">
+  </div>
+  <a href="https://instagram.com/symphonyofsummits" target="_blank" style="font-size:12px;color:var(--blue);font-weight:700">@symphonyofsummits →</a>
+</aside>
+
+<!-- =============== FLOATING WHATSAPP =============== -->
+<a class="wa-float" href="https://wa.me/919999999999?text=Hi%20Symphony%20of%20Summits%2C%20I%27d%20like%20to%20know%20about..." target="_blank" title="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+  </svg>
+</a>
+
+<!-- =============== QUOTE MODAL =============== -->
+<div class="modal" id="modal">
+  <div class="modal-card">
+    <button class="close" onclick="closeQuote()">×</button>
+    <div class="kicker">Start your journey</div>
+    <h2>Request a quotation</h2>
+    <p style="color:var(--muted)">Tell us a little about your trip and we'll take it from there.</p>
+    <form class="form" onsubmit="submitQuote(event)">
+      <input required placeholder="Full name">
+      <input required type="email" placeholder="Email">
+      <input required placeholder="Phone (+91)">
+      <input placeholder="Preferred destination">
+      <input type="date">
+      <input type="number" min="1" placeholder="Travellers">
+      <textarea placeholder="Your requirements"></textarea>
+      <button class="btn full">Submit enquiry</button>
+    </form>
+  </div>
+</div>
+
+<!-- =============== TOAST =============== -->
+<div class="toast" id="toast"></div>
+
+<!-- =============== SCRIPTS =============== -->
+<script src="js/api.js"></script>
+<script src="js/booking.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
