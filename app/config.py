@@ -60,8 +60,11 @@ class Settings(BaseSettings):
     WA_TEMPLATE_PAYMENT_RECEIVED: str = "payment_received"
 
     # Email
-    EMAIL_PROVIDER: str = "brevo"
+        # Email
+    EMAIL_PROVIDER: str = "gmail"
     BREVO_API_KEY: str = ""
+    GMAIL_USER: str = ""
+    GMAIL_APP_PASSWORD: str = ""
     EMAIL_FROM: str = "hello@symphonyofsummits.com"
     EMAIL_FROM_NAME: str = "Symphony of Summits"
 
