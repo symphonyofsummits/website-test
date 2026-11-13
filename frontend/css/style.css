@@ -64,7 +64,7 @@ img { max-width: 100%; display: block; }
 
 /* ----- HERO ----- */
 .hero {
-  min-height: 780px; height: 94vh; position: relative; overflow: hidden; color: #fff; background: #123;
+  min-height: 780px; height: auto; position: relative; overflow: hidden; color: #fff; background: #123;
 }
 .hero::before {
   content: ""; position: absolute; inset: 0;
@@ -73,7 +73,7 @@ img { max-width: 100%; display: block; }
     linear-gradient(0deg, rgba(2, 20, 30, .55), transparent 55%),
     url("https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=2200&q=85") center/cover;
 }
-.hero-content { position: relative; z-index: 2; max-width: 850px; padding: 210px 7vw 70px; }
+.hero-content { position: relative; z-index: 2; max-width: 850px; padding: 210px 7vw 130px; }
 .eyebrow {
   font-size: 12px; letter-spacing: .18em; text-transform: uppercase; font-weight: 700;
   color: #ffd2b0; margin-bottom: 18px;
@@ -86,7 +86,8 @@ img { max-width: 100%; display: block; }
 }
 .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
 .scroll {
-  position: absolute; bottom: 28px; left: 7vw;
+  display: none; /* hidden: overlapped the buttons and search bar */
+  position: absolute; bottom: 110px; right: 7vw;
   font-size: 12px; letter-spacing: .16em; text-transform: uppercase; opacity: .75;
 }
 
