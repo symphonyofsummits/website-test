@@ -124,7 +124,7 @@ async function submitLogin(e) {
         email,
         password,
         full_name: f.full_name.value || email.split("@")[0],
-        phone: f.phone.value || "+919999999999",
+        phone: f.phone.value || "+917992422374",
       });
     }
     window.SOS.authStore.set(tokens.access_token);

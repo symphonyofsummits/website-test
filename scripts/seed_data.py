@@ -6,6 +6,8 @@ import asyncio
 from datetime import date, timedelta
 from decimal import Decimal
 
+
+
 from sqlalchemy import select
 
 from app.database import session_scope
@@ -109,7 +111,7 @@ async def main():
         if not admin:
             admin = User(
                 email="admin@symphonyofsummits.com",
-                phone="+919999999999",
+                phone="+917992422374",
                 full_name="Symphony of Summits Admin",
                 role=UserRole.SUPER_ADMIN,
                 email_verified_at=date.today(),
